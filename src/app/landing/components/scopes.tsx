@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Constants } from "../../constants";
 
 const Scopes = ({ getCheckList }: { getCheckList: Function }) => {
   const [data, setData] = useState<string[]>([]);
@@ -13,12 +14,12 @@ const Scopes = ({ getCheckList }: { getCheckList: Function }) => {
       "Reservations:PUT",
       "Reservations:DELETE",
     ]);
-    // fetch("https://87b6-49-204-163-144.ngrok-free.app/realm/scopes", {
-    //   credentials: "include",
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => setData(data))
-    //   .catch((error) => console.log(error));
+    //   fetch(`${Constants.devicethreadApi}/realm/scopes`, {
+    //     credentials: "include",
+    //   })
+    //     .then((response) => response.json())
+    //     .then((data) => setData(data))
+    //     .catch((error) => console.log(error));
   }, []);
 
   useEffect(() => {

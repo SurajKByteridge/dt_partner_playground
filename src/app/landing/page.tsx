@@ -1,9 +1,11 @@
 "use client";
 
 import TextField from "./components/textfield";
+import { format } from "url";
 import { useState, useEffect } from "react";
 import Scopes from "./components/scopes";
 import Logo from "./components/logo";
+import { Constants } from "../constants";
 
 export default function Landing() {
   const [clientIDValue, setClientIDValue] = useState("");
@@ -12,9 +14,18 @@ export default function Landing() {
   const [checkedScopes, setCheckedScopes] = useState([]);
 
   useEffect(() => {
-    const oAuthUrl = `https://localhost:8000/v1.1/oauth?client_id=${clientIDValue}&response_type=code&redirect_uri=${redirectURIValue}&scope=${checkedScopes.join(
-      " "
-    )}`;
+    const oAuthUrl = format({
+      protocol: "http",
+      hostname: Constants.devicethreadApi,
+      pathname: "/v1.1/oauth",
+      query: {
+        client_id: clientIDValue,
+        response_type: "code",
+        redirect_uri: redirectURIValue,
+        scope: checkedScopes.join(" "),
+      },
+    });
+
     setOAuthUrl(oAuthUrl);
   }, [clientIDValue, redirectURIValue, checkedScopes]);
 
@@ -66,7 +77,7 @@ export default function Landing() {
             Connect
           </button>
           <code className="bg-custom-bg-light text-gray-500 p-2 rounded-sm overflow-scroll font-mono m-2 w-full transition-height duration-300 text-xs ease">
-            {oAuthUrl}
+            {decodeURIComponent(oAuthUrl)}
           </code>
         </div>
       </div>
