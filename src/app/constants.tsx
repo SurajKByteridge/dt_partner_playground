@@ -1,1 +1,1 @@
-export const Constants = { devicethreadApi: "example.com" };
+export const Constants = { devicethreadApi: "api-dev.dthreaddev.com" };
