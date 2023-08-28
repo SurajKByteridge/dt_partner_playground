@@ -1,10 +1,9 @@
 "use client";
 
-import Image from "next/image";
-import DTLogo from "../img/dt-logo-text.png";
 import TextField from "./components/textfield";
 import { useState, useEffect } from "react";
 import Scopes from "./components/scopes";
+import Logo from "./components/logo";
 
 export default function Landing() {
   const [clientIDValue, setClientIDValue] = useState("");
@@ -13,7 +12,7 @@ export default function Landing() {
   const [checkedScopes, setCheckedScopes] = useState([]);
 
   useEffect(() => {
-    const oAuthUrl = `https://87b6-49-204-163-144.ngrok-free.app/v1.1/oauth?client_id=${clientIDValue}&response_type=code&redirect_uri=${redirectURIValue}&scope=${checkedScopes.join(
+    const oAuthUrl = `https://localhost:8000/v1.1/oauth?client_id=${clientIDValue}&response_type=code&redirect_uri=${redirectURIValue}&scope=${checkedScopes.join(
       " "
     )}`;
     setOAuthUrl(oAuthUrl);
@@ -36,7 +35,6 @@ export default function Landing() {
   };
 
   const onCheckScope = (scopes: []) => {
-    console.log(scopes);
     setCheckedScopes(scopes);
   };
 
@@ -44,13 +42,7 @@ export default function Landing() {
     <main className="bg-custom-bg-light h-screen flex justify-center items-center ">
       <div>
         <div className="bg-white flex flex-col items-center w-96 rounded-sm p-5">
-          <Image
-            src={DTLogo}
-            width={180}
-            height={50}
-            alt="DT-logo"
-            className="m-5"
-          />
+          <Logo />
           <TextField
             label="Client ID"
             value={clientIDValue}
@@ -65,15 +57,15 @@ export default function Landing() {
           ></TextField>
           <Scopes getCheckList={onCheckScope}></Scopes>
           <button
-            className="bg-accent-color hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 mb-4 rounded-sm w-full"
+            className="bg-accent-color text-white text-sm hover:bg-blue-700 py-2 px-4 my-4 rounded-sm w-full disabled:bg-custom-bg-light disabled:text-gray-400"
             disabled={
-              !clientIDValue && !redirectURIValue && checkedScopes.length === 0
+              !clientIDValue || !redirectURIValue || !checkedScopes.length
             }
             onClick={onConnectClick}
           >
             Connect
           </button>
-          <code className="bg-custom-bg-light text-black p-2 rounded-sm font-mono m-2 w-full overflow-scroll text-sm ">
+          <code className="bg-custom-bg-light text-gray-500 p-2 rounded-sm overflow-scroll font-mono m-2 w-full transition-height duration-300 text-xs ease">
             {oAuthUrl}
           </code>
         </div>
