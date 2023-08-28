@@ -42,7 +42,9 @@ export default function Landing() {
   };
 
   const onConnectClick = () => {
-    window.open(oAuthUrl, "_blank");
+    if (typeof window !== "undefined") {
+      window.open(oAuthUrl, "_blank");
+    }
   };
 
   const onCheckScope = (scopes: []) => {

@@ -6,8 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "next build && next export && npx gh-pages -d out"
   },
+  "homepage": "https://SurajKByteridge.github.io/dt_partner_playground",
   "dependencies": {
     "@types/node": "20.5.6",
     "@types/react": "18.2.21",
@@ -19,7 +21,11 @@
     "postcss": "8.4.28",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sharp": "^0.32.5",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.0.0"
   }
 }
