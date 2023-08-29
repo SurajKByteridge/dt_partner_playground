@@ -7,11 +7,13 @@ const TextField = ({
   placeholder,
   onChange,
   value,
+  hideContent = false,
 }: {
   label: string;
   placeholder: string;
   onChange: Function;
   value: string;
+  hideContent?: boolean;
 }) => {
   return (
     <div className="flex flex-col w-full mb-4">
@@ -19,8 +21,8 @@ const TextField = ({
         {label}
       </label>
       <input
-        id={placeholder}
-        type="text"
+        id={label}
+        type={hideContent ? "password" : "text"}
         placeholder={placeholder}
         value={value}
         className="border border-gray-300 rounded-sm p-2 text-sm focus:outline-none focus:border-accent-color"

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Constants } from "../../constants";
+import { format } from "url";
 
 const Scopes = ({ getCheckList }: { getCheckList: Function }) => {
   const [data, setData] = useState<string[]>([]);
@@ -9,17 +10,25 @@ const Scopes = ({ getCheckList }: { getCheckList: Function }) => {
 
   useEffect(() => {
     setData([
-      "Reservations:CREATE",
-      "Reservations:GET",
-      "Reservations:PUT",
-      "Reservations:DELETE",
+      "reservations:create",
+      "reservations:get",
+      "reservations:put",
+      "reservations:delete",
+      "orgs:get",
+      "orgs:put",
+      "profile",
+      "email",
     ]);
-    //   fetch(`${Constants.devicethreadApi}/realm/scopes`, {
-    //     credentials: "include",
-    //   })
-    //     .then((response) => response.json())
-    //     .then((data) => setData(data))
-    //     .catch((error) => console.log(error));
+
+    // const getScopeUrl = format({
+    //   protocol: "https",
+    //   hostname: "a11c-49-204-160-130.ngrok-free.app",
+    //   pathname: "api/authorization/realm/scopes",
+    // });
+    // fetch(getScopeUrl)
+    //   .then((response) => response.json())
+    //   .then((data) => setData(data))
+    //   .catch((error) => console.log(error));
   }, []);
 
   useEffect(() => {

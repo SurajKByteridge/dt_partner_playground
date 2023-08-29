@@ -6,18 +6,20 @@ import { useState, useEffect } from "react";
 import Scopes from "./components/scopes";
 import Logo from "./components/logo";
 import { Constants } from "../constants";
+import Link from "next/link";
 
 export default function Landing() {
   const [clientIDValue, setClientIDValue] = useState("");
   const [redirectURIValue, setRedirectURIValue] = useState("");
   const [oAuthUrl, setOAuthUrl] = useState("");
   const [checkedScopes, setCheckedScopes] = useState([]);
+  const [showGetToken, setShowGetToken] = useState(false);
 
   useEffect(() => {
     const oAuthUrl = format({
       protocol: "http",
       hostname: Constants.devicethreadApi,
-      pathname: "/v1.1/oauth",
+      pathname: "/oauth",
       query: {
         client_id: clientIDValue,
         response_type: "code",
@@ -33,18 +35,17 @@ export default function Landing() {
     setClientIDValue(e.target.value);
   };
 
-  const handleCheckedScopes = (e: any) => {
-    handleCheckedScopes(e.target.value);
-  };
-
   const handleRedirectURIValueChange = (e: any) => {
     setRedirectURIValue(e.target.value);
   };
 
   const onConnectClick = () => {
-    if (typeof window !== "undefined") {
-      window.open(oAuthUrl, "_blank");
-    }
+    localStorage.setItem("clientID", clientIDValue);
+    localStorage.setItem("redirectUri", redirectURIValue);
+    setTimeout(() => {
+      setShowGetToken(true);
+    }, 1000);
+    window.open(oAuthUrl, "_blank");
   };
 
   const onCheckScope = (scopes: []) => {
@@ -78,6 +79,16 @@ export default function Landing() {
           >
             Connect
           </button>
+          {showGetToken ? (
+            <span className="text-gray-500 text-xs text-start w-full pb-2">
+              Received your authorization code ?{" "}
+              <Link className="text-accent-color" href="/token">
+                Access token
+              </Link>
+            </span>
+          ) : (
+            <></>
+          )}
           <code className="bg-custom-bg-light text-gray-500 p-2 rounded-sm overflow-scroll font-mono m-2 w-full transition-height duration-300 text-xs ease">
             {decodeURIComponent(oAuthUrl)}
           </code>
