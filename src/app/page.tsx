@@ -6,7 +6,7 @@ import { useEffect } from "react";
 export default function Home() {
   const { push } = useRouter();
   useEffect(() => {
-    push("/landing");
+    push("/playground");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return <></>;

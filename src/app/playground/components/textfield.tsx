@@ -25,7 +25,7 @@ const TextField = ({
         type={hideContent ? "password" : "text"}
         placeholder={placeholder}
         value={value}
-        className="border border-gray-300 rounded-sm p-2 text-sm focus:outline-none focus:border-accent-color"
+        className="border border-gray-300 rounded-sm p-2 text-xs focus:outline-none focus:border-accent-color"
         onChange={(e) => {
           onChange(e);
         }}

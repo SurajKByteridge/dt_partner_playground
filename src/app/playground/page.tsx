@@ -8,7 +8,7 @@ import Logo from "./components/logo";
 import { Constants } from "../constants";
 import Link from "next/link";
 
-export default function Landing() {
+export default function Playground() {
   const [clientIDValue, setClientIDValue] = useState("");
   const [redirectURIValue, setRedirectURIValue] = useState("");
   const [oAuthUrl, setOAuthUrl] = useState("");
@@ -82,7 +82,7 @@ export default function Landing() {
           {showGetToken ? (
             <span className="text-gray-500 text-xs text-start w-full pb-2">
               Received your authorization code ?{" "}
-              <Link className="text-accent-color" href="/token">
+              <Link className="text-accent-color" href="/token" target="_blank">
                 Access token
               </Link>
             </span>
