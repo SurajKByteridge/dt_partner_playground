@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
-import Logo from "../landing/components/logo";
-import TextField from "../landing/components/textfield";
+import Logo from "../playground/components/logo";
+import TextField from "../playground/components/textfield";
 import { Constants } from "../constants";
 import { format } from "url";
 
