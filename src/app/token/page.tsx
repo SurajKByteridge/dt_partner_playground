@@ -51,11 +51,12 @@ export default function Token() {
     fetch(tokenUrl, requestOptions)
       .then((response) => response.json())
       .then((result) => {
+        console.log("data", result);
         const { error } = result.data;
         setHasError(error);
         setResponseBody(JSON.stringify(result.data, null, 1));
       })
-      .catch((error) => console.log("Can't get the accesstoken", error));
+      .catch((error) => console.log("Can't get the access token", error));
   };
 
   const handleClientSecret = (e: any) => {
