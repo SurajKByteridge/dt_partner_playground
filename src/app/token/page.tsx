@@ -25,38 +25,42 @@ export default function Token() {
   }, []);
 
   const onGetTokenClick = () => {
-    const myHeaders: HeadersInit = new Headers();
-    myHeaders.set("Content-Type", "application/json");
+    try {
+      const myHeaders: HeadersInit = new Headers();
+      myHeaders.set("Content-Type", "application/json");
 
-    const body = JSON.stringify({
-      client_id: clientIDValue,
-      redirect_uri: redirectURIValue,
-      client_secret: clientSecretValue,
-      code: authCodeValue,
-      grant_type: "authorization_code",
-    });
+      const body = JSON.stringify({
+        client_id: clientIDValue,
+        redirect_uri: redirectURIValue,
+        client_secret: clientSecretValue,
+        code: authCodeValue,
+        grant_type: "authorization_code",
+      });
 
-    const requestOptions: RequestInit = {
-      method: "POST",
-      headers: myHeaders,
-      body: body,
-    };
+      const requestOptions: RequestInit = {
+        method: "POST",
+        headers: myHeaders,
+        body: body,
+      };
 
-    const tokenUrl = format({
-      protocol: "https",
-      hostname: Constants.devicethreadApi,
-      pathname: "/api/access_token",
-    });
+      const tokenUrl = format({
+        protocol: "https",
+        hostname: Constants.devicethreadApi,
+        pathname: "/api/access_token",
+      });
 
-    fetch(tokenUrl, requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        console.log("data", result);
-        const { error } = result.data;
-        setHasError(error);
-        setResponseBody(JSON.stringify(result.data, null, 1));
-      })
-      .catch((error) => console.log("Can't get the access token", error));
+      fetch(tokenUrl, requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          console.log("data", result);
+          const { error } = result.data;
+          setHasError(error);
+          setResponseBody(JSON.stringify(result.data, null, 1));
+        })
+        .catch((error) => console.log("Can't get the access token", error));
+    } catch (error) {
+      console.log("get Token Error", error)
+    }
   };
 
   const handleClientSecret = (e: any) => {
