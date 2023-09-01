@@ -28,6 +28,7 @@ export default function Token() {
     try {
       const myHeaders: HeadersInit = new Headers();
       myHeaders.set("Content-Type", "application/json");
+      myHeaders.set("Access-Control-Allow-Origin","*");
 
       const body = JSON.stringify({
         client_id: clientIDValue,
