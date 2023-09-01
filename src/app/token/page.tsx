@@ -55,7 +55,7 @@ export default function Token() {
         setHasError(error);
         setResponseBody(JSON.stringify(result.data, null, 1));
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.log("Can't get the accesstoken", error));
   };
 
   const handleClientSecret = (e: any) => {
