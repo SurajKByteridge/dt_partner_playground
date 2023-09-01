@@ -46,7 +46,9 @@ export async function POST(request: Request, response: Request) {
   //     console.log("kc access token", error);
   //     return NextResponse.json({ data: "Hello" });
   //   });
-  // const fetchedData = await fetch(kcTokenUrl, requestOptions);
+  const fetchedData = await fetch(kcTokenUrl, requestOptions);
+  console.log("fetchedData", fetchedData);
+  console.log(JSON.stringify(fetchedData));
 
   // let dataRes = JSON.parse(await fetchedData.text());
 
