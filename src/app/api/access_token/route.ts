@@ -6,9 +6,9 @@ export async function POST(request: Request, response: Request) {
   try {
     const data = await request.json();
 
-    var myHeaders:HeadersInit = new Headers();
+    var myHeaders: HeadersInit = new Headers();
     myHeaders.set("Content-Type", "application/x-www-form-urlencoded");
-    myHeaders.set("Access-Control-Allow-Origin","*");
+    myHeaders.set("Access-Control-Allow-Origin", "*");
 
     var urlencoded = new URLSearchParams();
     urlencoded.append("code", data.code);
@@ -20,7 +20,7 @@ export async function POST(request: Request, response: Request) {
     var requestOptions: RequestInit = {
       method: "POST",
       headers: myHeaders,
-      mode: 'no-cors',
+      mode: "no-cors",
       body: urlencoded,
       redirect: "follow",
     };
@@ -30,9 +30,9 @@ export async function POST(request: Request, response: Request) {
       requestOptions
     );
 
-    let dataRes = await fetchedData.text();
+    // let dataRes = await fetchedData.text();
 
-    return NextResponse.json({ data: dataRes });
+    return NextResponse.json({ data: "hello" });
   } catch (error) {
     console.log(error);
   }
