@@ -36,19 +36,19 @@ export async function POST(request: Request, response: Request) {
     hostname: "localhost",
     pathname: "/realms/devicethread/protocol/openid-connect/token",
   });
-  fetch(kcTokenUrl, requestOptions)
-    .then((response) => response.text())
-    .then((result) => {
-      console.log("data", result);
-      return NextResponse.json({ data: "Hello" });
-    })
-    .catch((error) => {
-      console.log("kc access token", error);
-      return NextResponse.json({ data: "Hello" });
-    });
+  // fetch(kcTokenUrl, requestOptions)
+  //   .then((response) => response.text())
+  //   .then((result) => {
+  //     console.log("data", result);
+  //     return NextResponse.json({ data: "Hello" });
+  //   })
+  //   .catch((error) => {
+  //     console.log("kc access token", error);
+  //     return NextResponse.json({ data: "Hello" });
+  //   });
   // const fetchedData = await fetch(kcTokenUrl, requestOptions);
 
   // let dataRes = JSON.parse(await fetchedData.text());
 
-  // return NextResponse.json({ data: "Hello" });
+  return NextResponse.json({ data: "Hello" });
 }
