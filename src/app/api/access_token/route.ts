@@ -6,8 +6,9 @@ export async function POST(request: Request, response: Request) {
   try {
     const data = await request.json();
 
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+    var myHeaders:HeadersInit = new Headers();
+    myHeaders.set("Content-Type", "application/x-www-form-urlencoded");
+    myHeaders.set("Access-Control-Allow-Origin","*");
 
     var urlencoded = new URLSearchParams();
     urlencoded.append("code", data.code);
@@ -19,6 +20,7 @@ export async function POST(request: Request, response: Request) {
     var requestOptions: RequestInit = {
       method: "POST",
       headers: myHeaders,
+      mode: 'no-cors',
       body: urlencoded,
       redirect: "follow",
     };
