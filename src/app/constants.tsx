@@ -1,3 +1,3 @@
 export const Constants = {
-  devicethreadApi: "devicethread-playground.vercel.app",
+  devicethreadApi: "dt-partner-playground.vercel.app",
 };

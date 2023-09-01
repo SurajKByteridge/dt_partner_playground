@@ -51,9 +51,9 @@ export default function Token() {
     fetch(tokenUrl, requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        const { error } = result;
+        const { error } = result.data;
         setHasError(error);
-        setResponseBody(JSON.stringify(result, null, 1));
+        setResponseBody(JSON.stringify(result.data, null, 1));
       })
       .catch((error) => console.log("error", error));
   };

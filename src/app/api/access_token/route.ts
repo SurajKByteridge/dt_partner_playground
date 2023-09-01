@@ -30,8 +30,7 @@ export async function POST(request: Request, response: Request) {
 
     let dataRes = JSON.parse(await fetchedData.text());
 
-   return NextResponse.json(dataRes);
-
+    return NextResponse.json({ data: dataRes });
   } catch (error) {
     console.log(error);
   }

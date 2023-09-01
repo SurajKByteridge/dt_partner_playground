@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export default function Playground() {
   const [clientIDValue, setClientIDValue] = useState("devicethread-playground");
-  const [redirectURIValue, setRedirectURIValue] = useState("https://devicethread-playground.vercel.app/connect/");
+  const [redirectURIValue, setRedirectURIValue] = useState("https://dt-partner-playground.vercel.app/connect/");
   const [oAuthUrl, setOAuthUrl] = useState("");
   const [checkedScopes, setCheckedScopes] = useState([]);
   const [showGetToken, setShowGetToken] = useState(false);
