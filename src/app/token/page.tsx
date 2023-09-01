@@ -43,9 +43,10 @@ export default function Token() {
     };
 
     const tokenUrl = format({
-      protocol: "https",
+      protocol: "http",
       hostname: Constants.devicethreadApi,
-      pathname: "/access_token",
+      port: 3000,
+      pathname: "/api/access_token",
     });
 
     fetch(tokenUrl, requestOptions)

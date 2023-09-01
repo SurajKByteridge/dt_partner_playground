@@ -9,8 +9,8 @@ import { Constants } from "../constants";
 import Link from "next/link";
 
 export default function Playground() {
-  const [clientIDValue, setClientIDValue] = useState("");
-  const [redirectURIValue, setRedirectURIValue] = useState("");
+  const [clientIDValue, setClientIDValue] = useState("devicethread-playground");
+  const [redirectURIValue, setRedirectURIValue] = useState("http://localhost:3000/connect/");
   const [oAuthUrl, setOAuthUrl] = useState("");
   const [checkedScopes, setCheckedScopes] = useState([]);
   const [showGetToken, setShowGetToken] = useState(false);
@@ -19,7 +19,8 @@ export default function Playground() {
     const oAuthUrl = format({
       protocol: "http",
       hostname: Constants.devicethreadApi,
-      pathname: "/oauth",
+      port: 3000,
+      pathname: "oauth",
       query: {
         client_id: clientIDValue,
         response_type: "code",
