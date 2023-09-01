@@ -4,11 +4,14 @@ import { format } from "url";
 
 export async function POST(request: Request, response: Request) {
   try {
+    console.log("Started ");
     const data = await request.json();
 
     var myHeaders: HeadersInit = new Headers();
     myHeaders.set("Content-Type", "application/x-www-form-urlencoded");
     myHeaders.set("Access-Control-Allow-Origin", "*");
+
+    console.log("Header ",myHeaders);
 
     var urlencoded = new URLSearchParams();
     urlencoded.append("code", data.code);
@@ -17,12 +20,16 @@ export async function POST(request: Request, response: Request) {
     urlencoded.append("redirect_uri", data.redirect_uri);
     urlencoded.append("client_secret", data.client_secret);
 
+    console.log("urlencoded ",urlencoded);
+
     var requestOptions: RequestInit = {
       method: "POST",
       headers: myHeaders,
       body: urlencoded,
       redirect: "follow",
     };
+
+    console.log("requestOptions ",requestOptions);
 
     const kcTokenUrl = format({
       protocol: "http",
