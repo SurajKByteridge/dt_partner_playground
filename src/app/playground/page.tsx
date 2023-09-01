@@ -10,16 +10,15 @@ import Link from "next/link";
 
 export default function Playground() {
   const [clientIDValue, setClientIDValue] = useState("devicethread-playground");
-  const [redirectURIValue, setRedirectURIValue] = useState("http://localhost:3000/connect/");
+  const [redirectURIValue, setRedirectURIValue] = useState("https://devicethread-playground.vercel.app/connect/");
   const [oAuthUrl, setOAuthUrl] = useState("");
   const [checkedScopes, setCheckedScopes] = useState([]);
   const [showGetToken, setShowGetToken] = useState(false);
 
   useEffect(() => {
     const oAuthUrl = format({
-      protocol: "http",
+      protocol: "https",
       hostname: Constants.devicethreadApi,
-      port: 3000,
       pathname: "oauth",
       query: {
         client_id: clientIDValue,

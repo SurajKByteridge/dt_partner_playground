@@ -1,3 +1,3 @@
 export const Constants = {
-  devicethreadApi: "localhost",
+  devicethreadApi: "devicethread-playground.vercel.app",
 };

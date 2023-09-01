@@ -43,9 +43,8 @@ export default function Token() {
     };
 
     const tokenUrl = format({
-      protocol: "http",
+      protocol: "https",
       hostname: Constants.devicethreadApi,
-      port: 3000,
       pathname: "/api/access_token",
     });
 
