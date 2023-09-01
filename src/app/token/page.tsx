@@ -25,8 +25,8 @@ export default function Token() {
   }, []);
 
   const onGetTokenClick = () => {
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+    const myHeaders: HeadersInit = new Headers();
+    myHeaders.set("Content-Type", "application/json");
 
     const body = JSON.stringify({
       client_id: clientIDValue,
