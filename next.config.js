@@ -5,8 +5,8 @@ const nextConfig = {
 };
 
 // const kcEndpoint = "https://api-dev.dthreaddev.com/api/authorization/oauth";
-const kcEndpoint =
-  "http://localhost:8080/realms/devicethread/protocol/openid-connect/auth";
+// const kcEndpoint =
+//   "http://localhost:8080/realms/devicethread/protocol/openid-connect/auth";
 
 module.exports = nextConfig;
 module.exports = {
@@ -17,12 +17,12 @@ module.exports = {
         destination: "/playground",
         permanent: true,
       },
-      {
-        source: "/oauth",
-        basePath: false,
-        destination: kcEndpoint,
-        permanent: false,
-      },
+      // {
+      //   source: "/oauth",
+      //   basePath: false,
+      //   destination: kcEndpoint,
+      //   permanent: false,
+      // },
     ];
   },
 };

@@ -19,7 +19,7 @@ export default function Playground() {
     const oAuthUrl = format({
       protocol: "https",
       hostname: Constants.devicethreadApi,
-      pathname: "oauth",
+      pathname: "api/authorization/oauth",
       query: {
         client_id: clientIDValue,
         response_type: "code",
