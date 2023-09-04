@@ -73,7 +73,7 @@ export default function Token() {
   };
 
   const handleCopy = () => {
-    const { access_token } = JSON.parse(responseBody).data;
+    const { access_token } = JSON.parse(responseBody);
     navigator.clipboard.writeText(access_token).catch((error) => {
       console.error("Failed to copy code to clipboard:", error);
     });
